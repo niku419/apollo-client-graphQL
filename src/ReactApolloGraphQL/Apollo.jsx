@@ -7,7 +7,7 @@ import {
   gql,
   createHttpLink
 } from "@apollo/client"
-import {Container, Card, CardDeck} from 'react-bootstrap'
+import {Container, Card, CardDeck, Spinner} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 
@@ -25,7 +25,7 @@ export default function Apollo() {
   const Rocket = () => {
    const { loading, error, data } = useQuery(gql`
     query {
-      launchesPast (limit: 20){
+      launchesPast{
         mission_name
         launch_date_local
         launch_site {
@@ -41,7 +41,12 @@ export default function Apollo() {
       }
     }
   `);
-  if (loading) return <p>Loading...</p>;
+  if (loading){  
+    return(  
+    <div style={{display: "grid", placeItems: "center"}}>
+      <Spinner animation="grow" />
+    </div>
+  )}
   if (error) return <p>Error {JSON.stringify(error)}</p>;
   return (
     <Container>
