@@ -1,5 +1,8 @@
 # React Apollo Spacex GraphQL
 
+1. Returns only the information useful.
+2. Also returns an image and a YouTube link for extra reference.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
